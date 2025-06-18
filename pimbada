@@ -1,0 +1,25 @@
+<div class="help-area">
+                        <h5 class="text-center mb-4"><i class="bi bi-question-circle me-2"></i>Ajuda Rápida</h5>
+                        <ul class="help-list">
+                            <li><i class="bi bi-upload me-2"></i> Clique em "Adicionar Arquivo" para selecionar</li>
+                            <li><i class="bi bi-folder me-2"></i> Arquivos são organizados automaticamente</li>
+                            <li><i class="bi bi-download me-2"></i> Clique no ícone de download para salvar</li>
+                        </ul>
+                    </div>
+
+
+
+
+
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                            <div class="mb-4 text-center">
+                                <input class="form-control d-none" type="file" id="fileToUpload" name="fileToUpload" required>
+                                <div class="upload-buttons">
+                                    <button type="button" class="upload-btn" onclick="document.getElementById('fileToUpload').click()">
+                                        <i class="bi bi-plus-circle me-1"></i> Adicionar Arquivo
+                                    </button>
+                                    <button type="submit" class="upload-btn">
+                                        <i class="bi bi-upload me-1"></i> Enviar
+                                    </button>
+                                </div>
+                                <small id="file-name" class="text-muted d-block mt-2">Nenhum arquivo selecionado</small>
