@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'//config/db_connect.php';
+require __DIR__.'/../config/db_connect.php';
 session_start();
 
 function formatSizeUnits($bytes) {
@@ -38,26 +38,26 @@ $diskUsage = getDiskUsage();
     
    <head>
     <title>Cloud Library</title>
-    <link rel="icon" href="logo preta.png" type="image/png">
+    <link rel="icon" href="../logos/logo-preta.png" type="image/png">
    </head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="assets/theme-switcher.js"></script>
+    <link rel="stylesheet" href="../frontend/style.css">
+    <script src="frontend/theme-switcher.js"></script>
 </head>
 <body>
   <div class="header">
     <div class="floating-title-logo">
         <h1 class="site-title">Cloud Library</h1>
         <div class="logo">
-            <img src="lgo library.png" alt="Logo">
+            <img src="../logos/lgo library.png" alt="Logo">
         </div>
     </div>
 </div>
         
         <?php if(isset($_SESSION['user_id'])): ?>
-            <button class="logout-btn" onclick="window.location.href='logout.php'">Sair</button>
+            <button class="logout-btn" onclick="window.location.href='../configarq/logout.php'">Sair</button>
         <?php endif; ?>
     </div>
     
@@ -124,7 +124,7 @@ $diskUsage = getDiskUsage();
     <div class="upload-container">
         <div class="upload-area">
             <h5 class="text-center mb-4">Faça seu upload</h5>
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+            <form action="/configarq/upload.php" method="post" enctype="multipart/form-data">
                 <div class="mb-4 text-center">
                     <input class="form-control d-none" type="file" id="fileToUpload" name="fileToUpload" required>
                     <div class="upload-buttons">
@@ -221,10 +221,10 @@ $diskUsage = getDiskUsage();
                                                 <td>'.round($row['file_size'] / 1048576, 2).' MB</td>
                                                 <td>'.date('d/m/Y H:i', strtotime($row['upload_date'])).'</td>
                                                 <td class="text-end">
-                                                    <a href="download.php?id='.$row['id'].'" class="btn btn-sm btn-outline-dark me-1">
+                                                    <a href="../configarq/download.php?id='.$row['id'].'" class="btn btn-sm btn-outline-dark me-1">
                                                         <i class="bi bi-download"></i>
                                                     </a>
-                                                    <a href="delete.php?id='.$row['id'].'" class="btn btn-sm btn-outline-danger" onclick="return confirm(\'Tem certeza que deseja excluir?\')">
+                                                    <a href="../configarq/delete.php?id='.$row['id'].'" class="btn btn-sm btn-outline-danger" onclick="return confirm(\'Tem certeza que deseja excluir?\')">
                                                         <i class="bi bi-trash"></i>
                                                     </a>
                                                 </td>

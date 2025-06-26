@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/config/db_connect.php';
+require __DIR__.'/../config/db_connect.php';
 
 $senha_plain = "if21"; // A senha que você quer definir
 $username = "Sahel";  // O usuário que vai receber a nova senha

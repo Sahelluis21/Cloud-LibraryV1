@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/config/db_connect.php';
+require (__DIR__.'/../config/db_connect.php');
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -19,6 +19,6 @@ if(isset($_GET['id'])) {
         exit;
     }
 }
-header("Location: index.php");
+header("Location: ../home/index.php");
 ?>
 
