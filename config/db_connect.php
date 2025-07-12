@@ -1,6 +1,6 @@
 <?php
 // config/db_connect.php
-//header('Content-Type: text/html; charset=utf-8');
+
 
 $host = "localhost";
 $dbname = "webupload";

@@ -1,5 +1,5 @@
 body {
-            background-color: rgb(243, 243, 243);  
+            background-color: rgb(133, 200, 255);  
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,7 +31,7 @@ body {
         .logo-circle {
             width: 60px;
             height: 60px;
-            background-color: rgb(126, 165, 74); /* Verde */
+            background-color: rgba(0, 140, 255, 0.801);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -48,7 +48,7 @@ body {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             font-size: 1.8rem;
-            color:rgb(126, 165, 74); /* Verde */
+            color:rgb(0, 140, 255, 0.801); /* Verde */
             letter-spacing: 1px;
             margin: 0;
         }
@@ -74,7 +74,7 @@ body {
             color: #2d3748;
         }
         .btn-login:hover {
-            background-color: rgb(140, 190, 80);
+            background-color: rgb(135, 211, 255);
             transform: translateY(-2px);
         }
         .btn-login:active {
@@ -84,7 +84,7 @@ body {
         }
         .btn-login:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgb(234, 236, 71);
+            box-shadow: 0 0 0 3px rgb(255, 255, 255);
         }
         .alert {
             margin-bottom: 1.5rem;

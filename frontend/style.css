@@ -1,7 +1,7 @@
 :root {
     /* Cores base */
-    --primary-color: rgb(126, 165, 74);
-    --secondary-color: #f8f9fa;
+    --primary-color: rgb(0, 140, 255);
+    --secondary-color: #ffffff;
     --border-radius: 15px;
     --sidebar-width: 280px;
     
@@ -10,18 +10,19 @@
     --sidebar-text: #212529;
     --submenu-bg: #e9ecef;
     --submenu-hover: #dee2e6;
-    --body-bg: #f5f5f5;
-    --card-bg: white;
+    --body-bg: #ceedff71;
+    --card-bg: rgb(255, 255, 255);
     --text-color: #212529;
     --table-bg: white;
     --table-header-bg: #f8f9fa;
     --table-border: #dee2e6;
     --table-hover: rgba(74, 111, 165, 0.05);
     --title-logo-bg: white;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.315);
     --logout-btn-bg: rgb(219, 103, 90);
     --logout-btn-hover: rgb(197, 61, 46);
-    --upload-btn-hover: rgba(106, 117, 7, 0.88);
+    --upload-btn-hover: rgba(11, 48, 104, 0.918);
+    
 }
 
 /* Variáveis para tema escuro */
@@ -38,10 +39,10 @@
     --table-border: #333;
     --table-hover: rgba(255, 255, 255, 0.05);
     --title-logo-bg: #1e1e1e;
-    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-color: rgba(143, 223, 255, 0.623);
     --logout-btn-bg: rgb(170, 68, 56);
     --logout-btn-hover: rgb(150, 48, 36);
-    --upload-btn-hover: rgba(86, 97, 0, 0.88);
+    --upload-btn-hover: rgba(11, 48, 104, 0.918);
 }
 
 /* Estilos base */
@@ -101,10 +102,10 @@ body {
 
 .logout-btn {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 50px;
+    right: 5px;
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 0px;
     border: none;
     background: var(--logout-btn-bg);
     color: white;
@@ -114,6 +115,67 @@ body {
 
 .logout-btn:hover {
     background: var(--logout-btn-hover);
+}
+
+.user-container {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background-color: #f5f5f5;
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: sans-serif;
+    z-index: 1000;
+
+    /* Animação */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de levitar no hover */
+.user-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.active-view {
+    font-weight: bold;
+    box-shadow: 0 0 0 3px rgba(0, 140, 255, 0.3);
+    transform: scale(1.02);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 4px;
+}
+
+.user-icon {
+    color: #555;
+}
+
+.username {
+    font-weight: bold;
+    color: #333;
+}
+
+.logout-btn {
+    background-color: #919191;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
 }
 
 /* Sidebar */
@@ -144,22 +206,26 @@ body {
     position: fixed;
     top: 80px;
     left: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2000;
     background: var(--sidebar-bg);
     color: var(--sidebar-text);
     border-radius: var(--border-radius);
     padding: 25px 20px;
     box-shadow: 0 5px 15px var(--shadow-color);
-    width: 220px;
-    display: none;
-    z-index: 1050;
-    transition: all 0.3s ease;
+    min-width: 250px;
+    max-width: 600px;
 }
 
 .sidebar.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
     animation: fadeIn 0.3s;
     box-shadow: 0 8px 25px var(--shadow-color);
 }
+
 
 .sidebar-menu {
     list-style: none;
@@ -222,6 +288,33 @@ body {
 .theme-menu-item.active .toggle-icon {
     transform: rotate(180deg);
 }
+.upload-progress-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-secondary);
+    color: var(--text-color);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    width: 300px;
+}
+.upload-progress-popup .progress {
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.upload-progress-popup .progress-bar {
+    height: 100%;
+    background-color: #007bff;
+    transition: width 0.3s;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateX(-20px); }
@@ -244,11 +337,52 @@ body {
 }
 
 .left-side {
-    flex: 1;
+    width: 280px; /* largura fixa para o menu lateral */
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    min-width: 0;
+    gap: 20px; /* espaço vertical entre as caixas */
+    margin: 0; /* remove margens extras */
+}
+.help-container,
+.storage-container,
+.info-container {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 8px 15px var(--shadow-color); /* sombra mais forte pra efeito flutuante */
+    transition: all 0.3s ease;
+}
+
+/* Efeito hover pra intensificar sombra e sensação de “flutuar” */
+.help-container:hover,
+.storage-container:hover,
+.info-container:hover {
+    box-shadow: 0 12px 25px var(--shadow-color);
+    transform: translateY(-5px);
+}
+/* Lado direito ocupa o restante da largura */
+.right-side {
+    flex: 1; /* ocupa todo espaço restante */
+    min-width: 0; /* evita overflow */
+}
+
+/* Preserve o padding e outros estilos do left-side */
+.left-side > * {
+    box-sizing: border-box;
+}
+
+/* Containers internos na esquerda */
+.left-side > .help-container,
+.left-side > .storage-container,
+.left-side > .info-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    transition: all 0.3s ease;
+    margin: 0; /* margens são controladas pelo gap no pai */
 }
 
 .right-side {
@@ -285,26 +419,93 @@ body {
     border-bottom: 1px solid var(--table-border);
 }
 
-/* Upload Area */
-.upload-buttons {
+/* Estilo do seletor de ordenação */
+#sortOrder {
+    border-radius: 20px;
+    border: none;
+    padding: 8px 16px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+#sortOrder:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Botão de upload estilizado */
+.upload-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
     display: flex;
-    gap: 10px;
+    align-items: center;
     justify-content: center;
 }
 
-.upload-btn {
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    background: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s;
+.upload-button:hover {
+    background-color: var(--upload-btn-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--shadow-color);
 }
 
-.upload-btn:hover {
-    background: var(--upload-btn-hover);
-    transform: translateY(-2px);
+.toast-notify {
+    position: fixed;
+    right: 20px;
+    top: 80px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0;
+    display: none;
+    z-index: 1050;
+    transition: opacity 0.5s ease;
+}
+
+.toast-notify.success {
+    background-color: rgb(126, 165, 74); /* verde Bootstrap */
+    color: white;
+}
+
+.toast-notify.error {
+    background-color: #dc3545; /* vermelho Bootstrap */
+    color: white;
+}
+
+.toast-notify.delete {
+    background-color: #d33848d7; /* amarelo Bootstrap */
+    color: #ffffff;
+}
+
+.download-btn {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.download-btn i {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.download-btn:hover i {
+    color: white;
 }
 
 /* Documents Grid */
@@ -355,7 +556,8 @@ body {
 }
 
 .table td {
-    border-color: var(--table-border);
+    border-color: var(--table-bg);
+    
     padding: 12px 15px;
     vertical-align: middle;
 }
@@ -364,11 +566,46 @@ body {
     background-color: var(--table-hover);
 }
 
+/* Table Styles */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: var(--table-bg);
+    color: var(--text-color);
+    border-collapse: collapse;
+    border: 1px solid var(--table-border);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--table-border);
+    transition: background-color 0.3s ease;
+}
+
+.table th {
+    background-color: var(--table-header-bg);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: var(--table-hover);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
 /* Storage Bar */
 .storage-container {
-    width: calc(100% - 40px); /* Igual ao padding do dual-layout-container */
-    max-width: 1400px;
-    margin: 20px auto 150px;
+    max-width: none !important; /* remove max-width 1400px */
+    margin: 0 !important; /* remove margens automáticas */
+    padding: 20px !important; /* padroniza padding igual aos outros */
 }
 
 .storage-info {
@@ -398,10 +635,39 @@ body {
     font-size: 12px;
     color: var(--text-color);
 }
+a {
+  color: black;
+  text-decoration: none; /* opcional: remove o underline */
+}
 
-.storage-bar:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--shadow-color);
+.support-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 30px;
+    background-color: var(--submenu-bg);
+}
+
+.support-menu-item.active .support-submenu {
+    max-height: 200px; /* ou mais, conforme o número de itens */
+}
+
+.support-menu-item .toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.support-menu-item.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+
+
+.support-menu-item .toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.support-menu-item.active .toggle-icon {
+    transform: rotate(180deg);
 }
 
 /* Responsividade */

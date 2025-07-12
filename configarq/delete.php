@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
             $deleteStmt->execute([$id]);
 
             if ($deleteStmt->rowCount() > 0) {
-                header("Location: ../home/index.php?deleted=1");
+                header("Location: ../home/index.php?view=pessoal&success=1&deleted=1");
                 exit();
             } else {
                 echo "Erro ao deletar registro no banco de dados.";
